@@ -19,20 +19,19 @@ class Board:
 			number = 2
 		print(f"Your turn player {number}")
 
+	    try:
+	        square_choice = int(input("Enter square number (1-9): ").strip())
+	        if not (1 <= square_choice <= 9):
+	            print("Incorrect input, please enter a valid number between 1 and 9.")
+	            return
 
-		# try:
-		square_choice = int(inpu("Enter square number (1-9): ").strip())
-		if not (1 <= square_choice <= 9):
-			return square_choice
-			if small_board[square_choice - 1] == " ":
-				small_board[square_choice - 1] = symbol
-			else:
-				print()
-				print("That space is taken.")
-		else:
-			print("Incorect input, please enter valid number.")
-		# except Exception:
-		# 	print("Incorect input, please enter valid number.")
+	        if self.small_board[square_choice - 1] == " ":
+	            self.small_board[square_choice - 1] = symbol
+	        else:
+	            print()
+	            print("That space is taken.")
+	    except ValueError:
+	        print("Incorrect input, please enter a valid number.")
 
 	def player_won(self, symbol: str, small_board: []):
 		start_range = 0
