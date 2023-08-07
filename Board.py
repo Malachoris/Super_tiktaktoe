@@ -4,19 +4,19 @@ COL_SIZE = 3
 class Board:
 
 	def __init__(self):
-		self.small_board = ["x" for _ in range(BOARD_SIZE)]
+		self.small_board = [" " for _ in range(BOARD_SIZE)]
 		# self.small_board = ["o", "o", "o", " ", " ", " ", " ", " ", " "]
 
 
-	# def print_board(self):
-	# 	for i in range(BOARD_SIZE):
-	# 	pass
+	def print_board(self):
+		for index, item in enumerate(board, start = 1):
+			print(item, end=" " if index % 3 else '\n')
 
 	def player_move(self, symbol: str):
-		number: int = 0
-		if symbol == 'x':
+		# number: int = 0
+		if symbol == "x":
 			number = 1
-		elif symbol == 'o':
+		elif symbol == "o":
 			number = 2
 		print(f"Your turn player {number}")
 
@@ -76,7 +76,9 @@ if __name__ == "__main__":
 	board = game.small_board
 
 	while True:
+		game.print_board()
 		game.player_move("x")
+		game.print_board()
 		if game.player_won("x", board):
 			print("x won")
 			break
@@ -85,10 +87,12 @@ if __name__ == "__main__":
 			break
 		game.player_move("o")
 		if game.player_won("o", board):
+			game.print_board()
 			print("o won")
 			break
 		elif game.is_draw():
 			print("draw")
 			break
+
 	# print(board.player_won("x", board.small_board))
 	# print(board.small_board)
