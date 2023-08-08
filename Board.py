@@ -9,7 +9,7 @@ class Board:
 
 
 	def print_board(self):
-		for index, item in enumerate(board, start = 1):
+		for index, item in enumerate(self.small_board, start = 1):
 			print(item, end=" " if index % 3 else '\n')
 
 	def player_move(self, symbol: str):
@@ -78,30 +78,32 @@ class Board:
 		# diagonal
 		if Board.input_value_converter(small_board[::step_over + 1]):
 			return True
-		if Board.input_value_converter(small_board[start_range + 1:stop_range - 1:step_over]):
+		if Board.input_value_converter(small_board[start_range + 2:stop_range - 2:step_over - 1]):
 			return True
 
 		return False
 
-	def is_draw(self):
-		pass
+	def is_draw(self) -> bool:
+		if " " not in self.small_board:
+			return True
+		else:
+			False
 
 if __name__ == "__main__":
 	game = Board()
-	board = game.small_board
 
 	while True:
 		game.print_board()
 		game.player_move("x")
 		game.print_board()
-		if game.player_won("x", board):
+		if game.player_won("x", game.small_board):
 			print("x won")
 			break
 		elif game.is_draw():
 			print("draw")
 			break
 		game.player_move("o")
-		if game.player_won("o", board):
+		if game.player_won("o", game.small_board):
 			game.print_board()
 			print("o won")
 			break
