@@ -45,6 +45,7 @@ class Board:
 				print("That space is taken.")
 
 	# converts inputs to nueric values and returns True if equals 3
+	@staticmethod
 	def input_value_converter(list_of_values: list):
 		numeric_values = []
 
