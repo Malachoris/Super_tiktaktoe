@@ -13,35 +13,49 @@ class Board:
 			print(item, end=" " if index % 3 else '\n')
 
 	def player_move(self, symbol: str):
-		# number: int = 0
+		number: int = 0
+		
 		if symbol == "x":
 			number = 1
 		elif symbol == "o":
 			number = 2
-		print(f"Your turn player {number}")
-
-		# try catch block should be as small as possible. 
-		try:
-			square_choice = int(input("Enter square number (1-9): ").strip())
-		except ValueError:
-			print("Incorrect input, please enter a valid number.")
-
-		if not (1 <= square_choice <= 9):
-			print("Incorrect input, please enter a valid number between 1 and 9.")
-			return
-
-		if self.small_board[square_choice - 1] == " ":
-			self.small_board[square_choice - 1] = symbol
 		else:
-			print()
-			print("That space is taken.")
+			raise ValueError (f"Incorect {symbol}, can only be 'x' or 'o'")
 
-	# need to calculate indexes of each row and make it abs value so either 111 or -1-1-1. 
-	# loop over elemets and check if value is equal abs value 3.
+		square_choice: int = 0
+		while True:
+			print(f"Your turn player {number}")
+			# try catch block should be as small as possible. 
+			try:
+				square_choice = int(input("Enter square number (1-9): ").strip())
+			except ValueError:
+				print("Incorrect input, please enter a valid number.")
+				continue
 
-	# Converts inputs to nueric values and returns True if equals 3
+			if not (1 <= square_choice <= 9):
+				# raise ValueError(f"Incorrect input {square_choice}, try again enter a valid number between 1 and 9.")
+				print(f"Incorrect input {square_choice}, try again enter a valid number between 1 and 9.")
+				continue
+
+			if self.small_board[square_choice - 1] == " ":
+				self.small_board[square_choice - 1] = symbol
+				break
+			else:
+				print()
+				print("That space is taken.")
+
+	# converts inputs to nueric values and returns True if equals 3
 	def input_value_converter(list_of_values: list):
-		numeric_values = [1 if value == "x" else -1 if value == "o" else 0 for value in list_of_values]
+		numeric_values = []
+
+		for value in list_of_values:
+			if value == "x":
+				numeric_values.append(1)
+			elif value == "o":
+				numeric_values.append(-1)
+			else:
+				numeric_values.append(0)
+
 		return abs(sum(numeric_values)) == 3
 
 	def player_won(self, symbol: str, small_board: list):
@@ -50,20 +64,21 @@ class Board:
 		step_over = 3
 
 		# positive and negative check 
-		# Read about decorators in python
 
+		# column
 		for column in range(COL_SIZE):
 			if Board.input_value_converter(small_board[column::COL_SIZE]):
 				return True
 
+		# row
 		for row in range(start_range, stop_range, step_over):
 			if Board.input_value_converter(small_board[row:row + step_over]):
 				return True
 
-		if Board.input_value_converter(small_board[::4]):
+		# diagonal
+		if Board.input_value_converter(small_board[::step_over + 1]):
 			return True
-
-		if Board.input_value_converter(small_board[1:8:3]):
+		if Board.input_value_converter(small_board[start_range + 1:stop_range - 1:step_over]):
 			return True
 
 		return False
@@ -93,6 +108,3 @@ if __name__ == "__main__":
 		elif game.is_draw():
 			print("draw")
 			break
-
-	# print(board.player_won("x", board.small_board))
-	# print(board.small_board)
