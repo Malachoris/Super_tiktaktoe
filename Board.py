@@ -46,7 +46,7 @@ class Board:
 
 	# converts inputs to nueric values and returns True if equals 3
 	@staticmethod
-	def input_value_converter(list_of_values: list):
+	def input_value_converter(list_of_values: list) -> bool:
 		numeric_values = []
 
 		for value in list_of_values:
