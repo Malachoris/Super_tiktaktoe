@@ -1,0 +1,2 @@
+BOARD_SIZE = 9
+COL_SIZE = 3
