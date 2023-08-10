@@ -1,4 +1,5 @@
 from constants import BOARD_SIZE, ROW_SIZE, COL_SIZE
+from board import Board
 
 class UltimateBoard:
 	
@@ -18,4 +19,6 @@ class UltimateBoard:
 		print("\n" + "-" * 25)
 
 if __name__ == "__main__":
+	board = UltimateBoard()
+	board.print_ultimate_board()
 	
