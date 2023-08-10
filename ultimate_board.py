@@ -16,3 +16,6 @@ class UltimateBoard:
 				board.print_board()
 				print("  |  ", end="")
 		print("\n" + "-" * 25)
+
+if __name__ == "__main__":
+	

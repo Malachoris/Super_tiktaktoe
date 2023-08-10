@@ -1,6 +1,6 @@
-from Board import Board
-from PlayerInput import PlayerInput
-from Rules import Rules
+from board import Board
+from player_input import PlayerInput
+from rules import Rules
 
 class Game:
 	def __init__(self):
