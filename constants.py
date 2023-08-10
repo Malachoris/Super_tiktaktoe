@@ -1,3 +1,0 @@
-BOARD_SIZE = 9
-ROW_SIZE = 3
-COL_SIZE = 3
