@@ -1,4 +1,4 @@
-from constants import COL_SIZE
+from constants import COL_SIZE, ROW_SIZE
 from converter import Converter
 from board import Board
 
@@ -23,14 +23,19 @@ class Rules:
 
         # row
         for row in range(start_range, stop_range, step_over):
-            if self.is_win_score(self.board[row : row + step_over]):
+            if self.is_win_score(self.board[row : row + ROW_SIZE]):
                 return True
 
         # diagonal
-        if self.is_win_score(self.board[:: step_over + 1]):
+        if self.is_win_score(self.board[:: ROW_SIZE + 1]):
             return True
         if self.is_win_score(
-            self.board[start_range + 2 : stop_range - 2 : step_over - 1]
+            self.board[
+                start_range
+                + (ROW_SIZE - 1) : stop_range
+                - (ROW_SIZE - 1) : ROW_SIZE
+                - 1
+            ]
         ):
             return True
 
