@@ -22,8 +22,8 @@ class UltimateBoard:
                 print(board, end=" " if index % 3 else "\n")
                 # print(board)
                 # for index, item in enumerate(board.small_board, start = 1):
-                    # print(index, end=" " if index % 3 else "\n")
-                    # print()
+                # print(index, end=" " if index % 3 else "\n")
+                # print()
 
 
 if __name__ == "__main__":
