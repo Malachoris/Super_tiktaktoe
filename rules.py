@@ -31,10 +31,9 @@ class Rules:
             return True
         if self.is_win_score(
             self.board[
-                start_range
-                + (ROW_SIZE - 1) : stop_range
-                - (ROW_SIZE - 1) : ROW_SIZE
-                - 1
+                (start_range + (ROW_SIZE - 1)) : (stop_range - (ROW_SIZE - 1)) : (
+                    ROW_SIZE - 1
+                )
             ]
         ):
             return True

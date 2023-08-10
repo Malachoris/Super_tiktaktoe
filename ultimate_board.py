@@ -12,26 +12,21 @@ class UltimateBoard:
             self.ultimate_board.append(row)
 
     def print_ultimate_board(self):
-        for row in self.ultimate_board:
-            self.print_row(row)
-            print("-" * (BOARD_SIZE * 2 + COL_SIZE + 1))
-
-    def print_row(self, row):
-        for index in range(ROW_SIZE):
-            for board in row:
-                self.print_board_section(board, index)
-                print(" | ", end="")
-            print()
-
-    def print_board_section(self, board, row_index):
-        start_index = row_index * ROW_SIZE
-        end_index = start_index + ROW_SIZE
-        board_section = board.small_board[start_index:end_index]
-        for index, item in enumerate(board_section, start=1):
-            print(item, end=" " if index % 3 else "")
-        print(end="")
+        for index, row in enumerate(self.ultimate_board, start=1):
+            print(index, end=" " if index % 3 else "\n")
+            # print(index)
+            # print(row)# self.print_row(row)
+            # print("-" * 25)
+            for index, board in enumerate(row, start=1):
+                # print(board)
+                print(board, end=" " if index % 3 else "\n")
+                # print(board)
+                # for index, item in enumerate(board.small_board, start = 1):
+                    # print(index, end=" " if index % 3 else "\n")
+                    # print()
 
 
 if __name__ == "__main__":
     board = UltimateBoard()
+    print(board.ultimate_board)
     board.print_ultimate_board()
