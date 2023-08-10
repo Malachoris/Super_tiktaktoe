@@ -1,10 +1,10 @@
-from Boardy import Boardy
+from Board import Board
 from PlayerInput import PlayerInput
 from Rules import Rules
 
 class Game:
 	def __init__(self):
-		self.board = Boardy()
+		self.board = Board()
 		self.player_input = PlayerInput(self.board.small_board)
 		self.rules = Rules(self.board.small_board)
 

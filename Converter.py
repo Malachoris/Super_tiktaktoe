@@ -1,4 +1,5 @@
 class Converter:
+	
 	@staticmethod
 	def input_value_converter(list_of_values: list) -> list:
 		

@@ -1,4 +1,4 @@
-from Boardy import Boardy
+from Board import Board
 
 class PlayerInput:
 
@@ -18,7 +18,6 @@ class PlayerInput:
 		square_choice: int = 0
 		while True:
 			print(f"Your turn player {number}")
-			# try catch block should be as small as possible. 
 			try:
 				square_choice = int(input("Enter square number (1-9): ").strip())
 			except ValueError:

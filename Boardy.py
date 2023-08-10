@@ -1,6 +1,6 @@
 from constants import BOARD_SIZE
 
-class Boardy:
+class Board:
 
 	def __init__(self):
 		self.small_board = [" " for _ in range(BOARD_SIZE)]
